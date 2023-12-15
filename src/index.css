@@ -3,7 +3,6 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -14,6 +13,7 @@
 body {
   margin: 0;
   padding: 0;
+  background-color: #242424;
 }
 
 * {
@@ -24,20 +24,21 @@ body {
 #root {
   max-width: 100vw;
   height: auto;
-  background-color: greenyellow;
 }
 
 header {
-  
   text-align: center;
   font-size: min(46px, 7vw);
-  background-color: aquamarine;
+}
+
+.header-title {
+  text-align: center;
+  font-size: min(26px, 4vw);
 }
 
 .score-main { 
   margin: 25px 0px;
   text-align: center;
-  background-color: skyblue;
   font-size: min(25px, 4.5vw);
 }
 
@@ -50,10 +51,12 @@ header {
 }
 
 .grid-main {
-  background-color: blue;
   max-width: 95vw;
   height: auto;
   margin: auto;
+  padding: 20px 0px;
+  border: 2px solid black;
+  background-color: rgb(150, 140, 140);
   display: grid;
   text-align: center;
   justify-items: center;
@@ -71,6 +74,7 @@ header {
   background: #353535;
   cursor: pointer;
   color: #fff;
+  border: 5px solid black;
   box-shadow: rgba(3, 8, 20, 0.1) 0px 0.15rem 0.5rem, rgba(2, 8, 20, 0.1) 0px 0.075rem 0.175rem;
   height: 250px;
   width: 200px;
@@ -92,16 +96,20 @@ img {
 }
 
 .card:hover {
+  border: 5px solid black;
+  border-radius: 30px;
+  background-color: rgba(53, 53, 53, 0.3);
   box-shadow: rgba(2, 8, 20, 0.1) 0px 0.35em 1.175em, rgba(2, 8, 20, 0.08) 0px 0.175em 0.5em;
-  transform: translateY(-3px) scale(1.01);
+  transform: translateY(-3px) scale(1.05);
 }
 
-.actor-name {
+.card-name {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  background-color: rgba(0,0,0,0.9);
+  font-size: max(16px, 0.9vw);
+  background-color: rgba(0, 0, 0, 0.9);
   color: white;
   text-align: center;
   padding: 10px;

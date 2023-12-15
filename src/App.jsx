@@ -7,64 +7,66 @@ function App() {
   const [currentArray, setCurrentArray] = useState([]);
   let [score, setScore] = useState(0);
   let [highScore, setHighScore] = useState(0);
-  let [gridColor, setGridColor] = useState("green");
+  let [gridColor, setGridColor] = useState("rgb(150, 140, 140)");
 
   useEffect(() => {
     fetch("https://rickandmortyapi.com/api/character")
-    .then(response => response.json())
-    .then(data => {
-      setCardArray(() => data.results.slice(0, 12));
-    })
-    .catch(error => console.error(error))
+      .then(response => response.json())
+      .then(data => {
+        setCardArray(() => data.results.slice(0, 12));
+      })
+      .catch(error => console.error(error))
   }, []);
 
   function changeArray(id) {
     if (!(currentArray.includes(id))) {
       setCurrentArray((arr) => [...arr, id]);
-      setGridColor("green"); //to change right back after trigerring else condition(to click twice)
+      setGridColor("rgb(150, 140, 140)"); //to change right back after trigerring else condition(to click twice)
       setScore(score => score += 1);
       shuffleArray(cardArray);
-      
+
     }
     else {
       setCurrentArray([]);
       setGridColor("red");
-      setTimeout(() => setGridColor("green"), 1000);
+      setTimeout(() => setGridColor("rgb(150, 140, 140)"), 1000);
       setHighScore(prevScore => prevScore > score ? prevScore : score);
       setScore(0);
     }
-  }
-  useEffect(() => {console.log(currentArray)}, [currentArray]);
-
-  function createCard(cardArray) {
-    return cardArray.map((data) => (
-      <>
-      <div id={data.id} className="card" onClick={() => changeArray(data.id)}><img src={data.image}></img><p className="card-name">{data.name}</p></div>
-      </>
-    ))
   }
 
   function shuffleArray(array) {
     let tempArray = [...array];
     for (var i = tempArray.length - 1; i > 0; i--) {
-        var j = Math.floor(Math.random() * (i + 1));
-        var temp = tempArray[i];
-        tempArray[i] = tempArray[j];
-        tempArray[j] = temp;
+      var j = Math.floor(Math.random() * (i + 1));
+      var temp = tempArray[i];
+      tempArray[i] = tempArray[j];
+      tempArray[j] = temp;
     }
     setCardArray(tempArray);
-}
+  }
+
+  useEffect(() => { console.log(currentArray) }, [currentArray]);
+
+  function CreateCard({cardArray}) {
+    return cardArray.map((data) => (
+      <>
+        <div id={data.id} className="card" onClick={() => changeArray(data.id)}><img src={data.image}></img><p className="card-name">{data.name}</p></div>
+      </>
+    ))
+  }
 
   return (
     <>
-    <header>Memory Game</header>
+      <header><i className="fa-solid fa-gamepad"></i> MemoryGame</header>
+      <div className="header-title">Test Your Memory Power Here</div>
       <div className="score-main">
         <div className="current-score">Current Score: {score}</div>
         <div className="highest-score">Highest Score: {highScore}</div>
       </div>
-    <section className="grid-main" style={{backgroundColor: gridColor}}>
-      {createCard(cardArray)}
-    </section>
+      <section className="grid-main" style={{ backgroundColor: gridColor }}>
+        <CreateCard cardArray = {cardArray}></CreateCard>
+      </section>
     </>
   )
 }
