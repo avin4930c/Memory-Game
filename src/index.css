@@ -126,3 +126,15 @@ img {
   text-align: center;
   padding: 10px;
 }
+
+@media (max-width: 768px) {
+  .grid-main {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(150px, 1fr));
+  }
+  .card {
+    width: 150px;
+    height: 200px;
+    cursor: text;
+  }
+}
