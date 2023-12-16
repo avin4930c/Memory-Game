@@ -4,6 +4,10 @@
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
 
+  --primary-color: #395B64;
+  --secondary-color: #A5C9CA;
+  --secondary-main-color: #E7F6F2;
+
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -13,7 +17,7 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #242424;
+  background-color: var(--secondary-color);
 }
 
 * {
@@ -27,11 +31,13 @@ body {
 }
 
 header {
+  color: #2C3E50;
   text-align: center;
   font-size: min(46px, 7vw);
 }
 
 .header-title {
+  color: #edf2f8;
   text-align: center;
   font-size: min(26px, 4vw);
 }
@@ -55,8 +61,8 @@ header {
   height: auto;
   margin: auto;
   padding: 20px 0px;
-  border: 2px solid black;
-  background-color: rgb(150, 140, 140);
+  border: 5px solid var(--secondary-main-color);
+  background-color: var(--primary-color);
   display: grid;
   text-align: center;
   justify-items: center;
@@ -71,10 +77,10 @@ header {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: #353535;
+  background: var(--secondary-color);
   cursor: pointer;
   color: #fff;
-  border: 5px solid black;
+  border: 5px solid var(--secondary-main-color);
   box-shadow: rgba(3, 8, 20, 0.1) 0px 0.15rem 0.5rem, rgba(2, 8, 20, 0.1) 0px 0.075rem 0.175rem;
   height: 250px;
   width: 200px;
@@ -96,11 +102,17 @@ img {
 }
 
 .card:hover {
-  border: 5px solid black;
+  color: var(--secondary-color);
+  border: 5px solid var(--secondary-color);
   border-radius: 30px;
-  background-color: rgba(53, 53, 53, 0.3);
+  background-color: var(--primary-color);
   box-shadow: rgba(2, 8, 20, 0.1) 0px 0.35em 1.175em, rgba(2, 8, 20, 0.08) 0px 0.175em 0.5em;
   transform: translateY(-3px) scale(1.05);
+}
+
+.card:hover p {
+  color: var(--primary-color);
+  font-weight: 650;
 }
 
 .card-name {
@@ -109,8 +121,8 @@ img {
   left: 0;
   width: 100%;
   font-size: max(16px, 0.9vw);
-  background-color: rgba(0, 0, 0, 0.9);
-  color: white;
+  background-color: var(--secondary-color);
+  color: var(--secondary-main-color);
   text-align: center;
   padding: 10px;
 }

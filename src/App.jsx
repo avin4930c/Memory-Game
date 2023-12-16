@@ -7,7 +7,7 @@ function App() {
   const [currentArray, setCurrentArray] = useState([]);
   let [score, setScore] = useState(0);
   let [highScore, setHighScore] = useState(0);
-  let [gridColor, setGridColor] = useState("rgb(150, 140, 140)");
+  let [gridColor, setGridColor] = useState("#395B64");
 
   useEffect(() => {
     fetch("https://rickandmortyapi.com/api/character")
@@ -21,7 +21,7 @@ function App() {
   function changeArray(id) {
     if (!(currentArray.includes(id))) {
       setCurrentArray((arr) => [...arr, id]);
-      setGridColor("rgb(150, 140, 140)"); //to change right back after trigerring else condition(to click twice)
+      setGridColor("#395B64"); //to change right back after trigerring else condition(to click twice)
       setScore(score => score += 1);
       shuffleArray(cardArray);
 
@@ -29,7 +29,7 @@ function App() {
     else {
       setCurrentArray([]);
       setGridColor("red");
-      setTimeout(() => setGridColor("rgb(150, 140, 140)"), 1000);
+      setTimeout(() => setGridColor("#395B64"), 1000);
       setHighScore(prevScore => prevScore > score ? prevScore : score);
       setScore(0);
     }
